@@ -1,10 +1,10 @@
-# earcon
+# earcons
 
 > Tiny vanilla TypeScript library for UI notification sounds — pure Web Audio API, no audio files, zero dependencies.
 
-[![npm](https://img.shields.io/npm/v/earcon)](https://www.npmjs.com/package/earcon)
-[![bundle size](https://img.shields.io/bundlephobia/minzip/earcon)](https://bundlephobia.com/package/earcon)
-[![license](https://img.shields.io/npm/l/earcon)](LICENSE)
+[![npm](https://img.shields.io/npm/v/earcons)](https://www.npmjs.com/package/earcons)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/earcons)](https://bundlephobia.com/package/earcons)
+[![license](https://img.shields.io/npm/l/earcons)](LICENSE)
 
 ## Why earcon?
 
@@ -25,7 +25,28 @@ An [earcon](https://en.wikipedia.org/wiki/Earcon) is an auditory icon — a shor
 ## Install
 
 ```bash
-npm install earcon
+npm install earcons
+```
+
+### CDN (no build step)
+
+```html
+<!-- jsDelivr -->
+<script src="https://cdn.jsdelivr.net/npm/earcons/dist/earcon.min.global.js"></script>
+
+<!-- unpkg -->
+<script src="https://unpkg.com/earcons/dist/earcon.min.global.js"></script>
+```
+
+All functions are available under the global `Earcon` object:
+
+```html
+<button onclick="Earcon.playSuccess()">✅</button>
+<button onclick="Earcon.playError()">❌</button>
+<script>
+  // or
+  Earcon.earcon("notification", { volume: 0.8 });
+</script>
 ```
 
 ---
@@ -33,7 +54,7 @@ npm install earcon
 ## Quick start
 
 ```ts
-import { playSuccess, playError, playWarning } from "earcon";
+import { playSuccess, playError, playWarning } from "earcons";
 
 // Defaults — medium variant, volume 0.5
 await playSuccess();
@@ -57,7 +78,7 @@ import {
   playNotification,
   playClick,
   playInfo,
-} from "earcon";
+} from "earcons";
 
 await playSuccess();
 await playError({ variant: "long", volume: 0.8 });
@@ -70,7 +91,7 @@ await playInfo({ volume: 0.3 });
 ### Generic `earcon()` — play by name
 
 ```ts
-import { earcon } from "earcon";
+import { earcon } from "earcons";
 
 await earcon("success");
 await earcon("error", { variant: "long" });
@@ -81,8 +102,8 @@ await earcon("error", { variant: "long" });
 ### Register a custom sound
 
 ```ts
-import { registerSound, earcon } from "earcon";
-import type { SoundPreset } from "earcon";
+import { registerSound, earcon } from "earcons";
+import type { SoundPreset } from "earcons";
 
 const chirp: SoundPreset = (_variant, _pitch) => ({
   name: "chirp",
@@ -110,7 +131,7 @@ await earcon("chirp");
 ### AudioContext management
 
 ```ts
-import { closeAudioContext, setAudioContext } from "earcon";
+import { closeAudioContext, setAudioContext } from "earcons";
 
 // Provide your own AudioContext (useful in frameworks)
 const myCtx = new AudioContext();

@@ -1,5 +1,5 @@
 {
-  "name": "earcon",
+  "name": "earcons",
   "version": "0.1.0",
   "description": "Tiny vanilla TypeScript library for playing UI notification sounds via the Web Audio API — no audio files, no dependencies.",
   "keywords": [
@@ -14,7 +14,18 @@
     "audio",
     "beep"
   ],
-  "author": "",
+  "author": {
+    "name": "smolgroot",
+    "url": "https://github.com/smolgroot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/smolgroot/earcons.git"
+  },
+  "homepage": "https://github.com/smolgroot/earcons#readme",
+  "bugs": {
+    "url": "https://github.com/smolgroot/earcons/issues"
+  },
   "license": "MIT",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -27,12 +38,16 @@
       "require": "./dist/index.cjs"
     }
   },
+  "browser": "./dist/earcon.min.global.js",
   "files": [
-    "dist"
+    "dist",
+    "LICENSE",
+    "README.md"
   ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",

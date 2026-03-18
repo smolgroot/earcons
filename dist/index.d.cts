@@ -137,7 +137,7 @@ declare function earcon(name: SoundName, opts?: SoundOptions): Promise<void>;
  * Register a custom sound under a new name so it can be played via {@link earcon}.
  *
  * @example
- * import type { SoundPreset } from "earcon";
+ * import type { SoundPreset } from "earcons";
  *
  * const mySound: SoundPreset = (variant, pitch) => ({
  *   name: "mySound",
