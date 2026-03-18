@@ -1,0 +1,50 @@
+{
+  "name": "earcon",
+  "version": "0.1.0",
+  "description": "Tiny vanilla TypeScript library for playing UI notification sounds via the Web Audio API — no audio files, no dependencies.",
+  "keywords": [
+    "web-audio-api",
+    "notification",
+    "sound",
+    "ui",
+    "earcon",
+    "sfx",
+    "typescript",
+    "browser",
+    "audio",
+    "beep"
+  ],
+  "author": "",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^28.0.0",
+    "@vitest/coverage-v8": "^1.4.0",
+    "jsdom": "^29.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.4.0"
+  }
+}
