@@ -13,6 +13,15 @@ import {
   playNotification,
   playClick,
   playInfo,
+  playToggle,
+  playDelete,
+  playMessage,
+  playUpload,
+  playDownload,
+  playEightBit,
+  playPolice,
+  playCoin,
+  playBoing,
   registerSound,
   setAudioContext,
   closeAudioContext,
@@ -110,6 +119,15 @@ describe("play* functions", () => {
     ["playNotification", playNotification],
     ["playClick",        playClick],
     ["playInfo",         playInfo],
+    ["playToggle",       playToggle],
+    ["playDelete",       playDelete],
+    ["playMessage",      playMessage],
+    ["playUpload",       playUpload],
+    ["playDownload",     playDownload],
+    ["playEightBit",     playEightBit],
+    ["playPolice",       playPolice],
+    ["playCoin",         playCoin],
+    ["playBoing",        playBoing],
   ] as const;
 
   for (const [name, fn] of allPlayers) {
@@ -166,7 +184,11 @@ describe("earcon()", () => {
   });
 
   it("plays built-in sounds by name", async () => {
-    const names = ["success", "error", "warning", "notification", "click", "info"] as const;
+    const names = [
+      "success", "error", "warning", "notification", "click", "info",
+      "toggle", "delete", "message", "upload", "download",
+      "eightBit", "police", "coin", "boing",
+    ] as const;
     for (const name of names) {
       await expect(earcon(name, { audioContext: ctx })).resolves.toBeUndefined();
     }

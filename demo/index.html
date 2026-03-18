@@ -22,6 +22,15 @@
       --info: #60a5fa;
       --notification: #a78bfa;
       --click: #94a3b8;
+      --toggle: #2dd4bf;
+      --delete: #fb7185;
+      --message: #c084fc;
+      --upload: #86efac;
+      --download: #7dd3fc;
+      --eightBit: #fde68a;
+      --police: #ef4444;
+      --coin: #fcd34d;
+      --boing: #fb923c;
       --radius: 10px;
     }
 
@@ -146,11 +155,31 @@
     }
 
     .grid {
-      max-width: 640px;
+      max-width: 960px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 0.75rem;
+    }
+
+    .section-divider {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.5rem 0 0;
+    }
+
+    .section-divider::before, .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
     }
 
     .card {
@@ -233,6 +262,10 @@
     }
     footer a { color: var(--accent); text-decoration: none; }
 
+    @media (max-width: 720px) {
+      .grid { grid-template-columns: 1fr 1fr; }
+    }
+
     @media (max-width: 480px) {
       .grid { grid-template-columns: 1fr; }
       .controls { grid-template-columns: 1fr; }
@@ -288,6 +321,16 @@
     { name: "notification", fn: "playNotification", color: "var(--notification)", desc: "Soft two-tone ding — neutral" },
     { name: "click",        fn: "playClick",        color: "var(--click)",        desc: "Short transient — tactile UI feedback" },
     { name: "info",         fn: "playInfo",         color: "var(--info)",         desc: "Single soft tone — informational" },
+    { name: "toggle",       fn: "playToggle",       color: "var(--toggle)",       desc: "Tactile on/off switch" },
+    { name: "delete",       fn: "playDelete",       color: "var(--delete)",       desc: "Rapid descending — destructive action" },
+    { name: "message",      fn: "playMessage",      color: "var(--message)",      desc: "Soft high ping — incoming chat" },
+    { name: "upload",       fn: "playUpload",       color: "var(--upload)",       desc: "Ascending sweep — file sent" },
+    { name: "download",     fn: "playDownload",     color: "var(--download)",     desc: "Descending sweep — file received" },
+    { _divider: "Fun & Misc 🎮" },
+    { name: "eightBit",     fn: "playEightBit",     color: "var(--eightBit)",     desc: "Chiptune arpeggio 🕹️" },
+    { name: "police",       fn: "playPolice",       color: "var(--police)",       desc: "Wee-woo! Alternating siren 🚨" },
+    { name: "coin",         fn: "playCoin",         color: "var(--coin)",         desc: "Classic pickup coin 🪙" },
+    { name: "boing",        fn: "playBoing",        color: "var(--boing)",        desc: "Comedy spring drop 🎪" },
   ];
 
   const grid = document.getElementById("grid");
@@ -300,7 +343,15 @@
     };
   }
 
-  SOUNDS.forEach(({ name, fn, color, desc }) => {
+  SOUNDS.forEach((item) => {
+    if ('_divider' in item) {
+      const div = document.createElement("div");
+      div.className = "section-divider";
+      div.innerHTML = `<span>${item._divider}</span>`;
+      grid.appendChild(div);
+      return;
+    }
+    const { name, fn, color, desc } = item;
     const card = document.createElement("div");
     card.className = "card";
     card.innerHTML = `
@@ -327,8 +378,8 @@
     if (pitch !== 0) parts.push(`pitch: ${pitch}`);
     const opts = parts.length ? `{ ${parts.join(", ")} }` : "";
 
-    document.querySelectorAll(".play-btn").forEach((btn, i) => {
-      const fn = SOUNDS[i].fn;
+    document.querySelectorAll(".play-btn").forEach((btn) => {
+      const fn = btn.dataset.fn;
       btn.closest(".card").querySelector(".snippet").textContent =
         opts ? `Earcon.${fn}(${opts})` : `Earcon.${fn}()`;
     });

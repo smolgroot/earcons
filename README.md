@@ -148,6 +148,8 @@ await closeAudioContext();
 
 ## Sound reference
 
+### UI sounds
+
 | Name | Waveform | Character |
 |---|---|---|
 | `success` | sine | Ascending major triad — bright, positive |
@@ -156,6 +158,20 @@ await closeAudioContext();
 | `notification` | sine | Soft descending two-tone ding — neutral |
 | `click` | sine | Very short transient — tactile UI feedback |
 | `info` | sine | Single soft tone — informational, non-intrusive |
+| `toggle` | triangle | Short tactile pop — on/off switch |
+| `delete` | sawtooth | Rapid descending — destructive action |
+| `message` | sine | Soft high ping — incoming chat message |
+| `upload` | sine | Ascending sweep — file sent |
+| `download` | sine | Descending sweep — file received |
+
+### Fun & misc
+
+| Name | Waveform | Character |
+|---|---|---|
+| `eightBit` | square | Chiptune arpeggio — retro 8-bit 🕹️ |
+| `police` | sawtooth | Alternating wee-woo siren 🚨 |
+| `coin` | square | Classic pickup coin 🪙 |
+| `boing` | sine | Comedy spring drop 🎪 |
 
 ---
 

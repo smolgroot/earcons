@@ -26,6 +26,15 @@ import {
   notificationPreset,
   clickPreset,
   infoPreset,
+  togglePreset,
+  deletePreset,
+  messagePreset,
+  uploadPreset,
+  downloadPreset,
+  eightBitPreset,
+  policePreset,
+  coinPreset,
+  boingPreset,
 } from "./sounds/index.js";
 
 // ---------------------------------------------------------------------------
@@ -78,17 +87,73 @@ export async function playInfo(opts: SoundOptions = {}): Promise<void> {
   return play(infoPreset(opts.variant ?? "medium", opts.pitch ?? 0), opts);
 }
 
+/** Play a tactile on/off toggle sound */
+export async function playToggle(opts: SoundOptions = {}): Promise<void> {
+  return play(togglePreset(opts.variant ?? "short", opts.pitch ?? 0), opts);
+}
+
+/** Play a delete / destructive action sound */
+export async function playDelete(opts: SoundOptions = {}): Promise<void> {
+  return play(deletePreset(opts.variant ?? "medium", opts.pitch ?? 0), opts);
+}
+
+/** Play a message / incoming chat sound */
+export async function playMessage(opts: SoundOptions = {}): Promise<void> {
+  return play(messagePreset(opts.variant ?? "medium", opts.pitch ?? 0), opts);
+}
+
+/** Play an upload / send-complete ascending sweep */
+export async function playUpload(opts: SoundOptions = {}): Promise<void> {
+  return play(uploadPreset(opts.variant ?? "medium", opts.pitch ?? 0), opts);
+}
+
+/** Play a download / receive-complete descending sweep */
+export async function playDownload(opts: SoundOptions = {}): Promise<void> {
+  return play(downloadPreset(opts.variant ?? "medium", opts.pitch ?? 0), opts);
+}
+
+/** Play a retro 8-bit chiptune arpeggio 🕹️ */
+export async function playEightBit(opts: SoundOptions = {}): Promise<void> {
+  return play(eightBitPreset(opts.variant ?? "medium", opts.pitch ?? 0), opts);
+}
+
+/** Play a police / emergency siren 🚨 */
+export async function playPolice(opts: SoundOptions = {}): Promise<void> {
+  return play(policePreset(opts.variant ?? "short", opts.pitch ?? 0), opts);
+}
+
+/** Play a classic coin pickup sound 🪙 */
+export async function playCoin(opts: SoundOptions = {}): Promise<void> {
+  return play(coinPreset(opts.variant ?? "short", opts.pitch ?? 0), opts);
+}
+
+/** Play a comedy spring/boing sound 🎪 */
+export async function playBoing(opts: SoundOptions = {}): Promise<void> {
+  return play(boingPreset(opts.variant ?? "medium", opts.pitch ?? 0), opts);
+}
+
 // ---------------------------------------------------------------------------
 // Sound bank — generic play-by-name API
 // ---------------------------------------------------------------------------
 
 const BANK = {
+  // UI sounds
   success: successPreset,
   error: errorPreset,
   warning: warningPreset,
   notification: notificationPreset,
   click: clickPreset,
   info: infoPreset,
+  toggle: togglePreset,
+  delete: deletePreset,
+  message: messagePreset,
+  upload: uploadPreset,
+  download: downloadPreset,
+  // fun & misc
+  eightBit: eightBitPreset,
+  police: policePreset,
+  coin: coinPreset,
+  boing: boingPreset,
 } as const;
 
 export type SoundName = keyof typeof BANK;
