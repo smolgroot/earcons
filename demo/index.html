@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>earcons — live demo</title>
-  <script src="https://cdn.jsdelivr.net/npm/earcons/dist/earcon.min.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/earcons@0.2.0/dist/earcon.min.global.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -401,7 +401,10 @@
     const btn = e.target.closest(".play-btn");
     if (!btn) return;
     const fn = btn.dataset.fn;
-    if (!Earcon[fn]) return;
+    if (!Earcon[fn]) {
+      console.warn(`earcons: ${fn} not found — CDN may be outdated`);
+      return;
+    }
 
     btn.classList.add("playing");
     btn.querySelector("svg").innerHTML = '<rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/>';
