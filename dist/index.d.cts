@@ -104,6 +104,24 @@ declare function clickPreset(variant: SoundVariant, pitchSemitones: number): Ear
 
 declare function infoPreset(variant: SoundVariant, pitchSemitones: number): EarconSound;
 
+declare function togglePreset(variant: SoundVariant, pitchSemitones: number): EarconSound;
+
+declare function deletePreset(variant: SoundVariant, pitchSemitones: number): EarconSound;
+
+declare function messagePreset(variant: SoundVariant, pitchSemitones: number): EarconSound;
+
+declare function uploadPreset(variant: SoundVariant, pitchSemitones: number): EarconSound;
+
+declare function downloadPreset(variant: SoundVariant, pitchSemitones: number): EarconSound;
+
+declare function eightBitPreset(variant: SoundVariant, pitchSemitones: number): EarconSound;
+
+declare function policePreset(variant: SoundVariant, pitchSemitones: number): EarconSound;
+
+declare function coinPreset(variant: SoundVariant, pitchSemitones: number): EarconSound;
+
+declare function boingPreset(variant: SoundVariant, pitchSemitones: number): EarconSound;
+
 /** Play a success / confirmation sound */
 declare function playSuccess(opts?: SoundOptions): Promise<void>;
 /** Play an error sound */
@@ -116,6 +134,24 @@ declare function playNotification(opts?: SoundOptions): Promise<void>;
 declare function playClick(opts?: SoundOptions): Promise<void>;
 /** Play an informational / neutral tone */
 declare function playInfo(opts?: SoundOptions): Promise<void>;
+/** Play a tactile on/off toggle sound */
+declare function playToggle(opts?: SoundOptions): Promise<void>;
+/** Play a delete / destructive action sound */
+declare function playDelete(opts?: SoundOptions): Promise<void>;
+/** Play a message / incoming chat sound */
+declare function playMessage(opts?: SoundOptions): Promise<void>;
+/** Play an upload / send-complete ascending sweep */
+declare function playUpload(opts?: SoundOptions): Promise<void>;
+/** Play a download / receive-complete descending sweep */
+declare function playDownload(opts?: SoundOptions): Promise<void>;
+/** Play a retro 8-bit chiptune arpeggio 🕹️ */
+declare function playEightBit(opts?: SoundOptions): Promise<void>;
+/** Play a police / emergency siren 🚨 */
+declare function playPolice(opts?: SoundOptions): Promise<void>;
+/** Play a classic coin pickup sound 🪙 */
+declare function playCoin(opts?: SoundOptions): Promise<void>;
+/** Play a comedy spring/boing sound 🎪 */
+declare function playBoing(opts?: SoundOptions): Promise<void>;
 declare const BANK: {
     readonly success: typeof successPreset;
     readonly error: typeof errorPreset;
@@ -123,6 +159,15 @@ declare const BANK: {
     readonly notification: typeof notificationPreset;
     readonly click: typeof clickPreset;
     readonly info: typeof infoPreset;
+    readonly toggle: typeof togglePreset;
+    readonly delete: typeof deletePreset;
+    readonly message: typeof messagePreset;
+    readonly upload: typeof uploadPreset;
+    readonly download: typeof downloadPreset;
+    readonly eightBit: typeof eightBitPreset;
+    readonly police: typeof policePreset;
+    readonly coin: typeof coinPreset;
+    readonly boing: typeof boingPreset;
 };
 type SoundName = keyof typeof BANK;
 /**
@@ -150,4 +195,4 @@ declare function earcon(name: SoundName, opts?: SoundOptions): Promise<void>;
  */
 declare function registerSound(name: string, preset: SoundPreset): void;
 
-export { type EarconSound, type Envelope, type NoteEvent, type SoundName, type SoundOptions, type SoundPreset, type SoundVariant, type WaveShape, closeAudioContext, earcon, playClick, playError, playInfo, playNotification, playSuccess, playWarning, registerSound, semitonesToMultiplier, setAudioContext };
+export { type EarconSound, type Envelope, type NoteEvent, type SoundName, type SoundOptions, type SoundPreset, type SoundVariant, type WaveShape, closeAudioContext, earcon, playBoing, playClick, playCoin, playDelete, playDownload, playEightBit, playError, playInfo, playMessage, playNotification, playPolice, playSuccess, playToggle, playUpload, playWarning, registerSound, semitonesToMultiplier, setAudioContext };
