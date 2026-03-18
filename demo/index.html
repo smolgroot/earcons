@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>earcons — live demo</title>
+  <script src="https://cdn.jsdelivr.net/npm/earcons/dist/earcon.min.global.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --border: #2a2d3a;
+      --accent: #6c8aff;
+      --accent-dim: #3d4f99;
+      --text: #e8eaf0;
+      --muted: #6b7280;
+      --success: #4ade80;
+      --error: #f87171;
+      --warning: #fbbf24;
+      --info: #60a5fa;
+      --notification: #a78bfa;
+      --click: #94a3b8;
+      --radius: 10px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    header {
+      max-width: 640px;
+      margin: 0 auto 3rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+
+    header h1 span { color: var(--accent); }
+
+    header p {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+
+    header a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: border-color 0.15s;
+    }
+    header a:hover { border-color: var(--accent); }
+
+    .controls {
+      max-width: 640px;
+      margin: 0 auto 2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .control label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .control output {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-left: 0.4rem;
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      outline: none;
+      cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .variant-group {
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .variant-group input[type="radio"] { display: none; }
+
+    .variant-group label {
+      flex: 1;
+      text-align: center;
+      padding: 0.35rem 0;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      color: var(--muted);
+      text-transform: none;
+      letter-spacing: normal;
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+    }
+
+    .variant-group input[type="radio"]:checked + label {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    .grid {
+      max-width: 640px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: border-color 0.15s;
+    }
+
+    .card:hover { border-color: #3a3d4a; }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .card-name {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .card-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .play-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      width: 100%;
+      padding: 0.6rem;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      background: transparent;
+      color: var(--text);
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.12s, border-color 0.12s, transform 0.08s;
+    }
+
+    .play-btn:hover { background: var(--border); }
+    .play-btn:active { transform: scale(0.97); }
+    .play-btn.playing { border-color: var(--accent); color: var(--accent); }
+
+    .snippet {
+      font-family: "SF Mono", "Fira Code", monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+      background: var(--bg);
+      border-radius: 5px;
+      padding: 0.5rem 0.65rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      user-select: all;
+    }
+
+    footer {
+      max-width: 640px;
+      margin: 3rem auto 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 480px) {
+      .grid { grid-template-columns: 1fr; }
+      .controls { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>ear<span>cons</span></h1>
+  <p>UI notification sounds via the Web Audio API.<br>No audio files. No dependencies. Pure TypeScript.</p>
+  <a href="https://github.com/smolgroot/earcons">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+    smolgroot/earcons
+  </a>
+</header>
+
+<div class="controls">
+  <div class="control">
+    <label>Variant</label>
+    <div class="variant-group">
+      <input type="radio" name="variant" id="v-short" value="short">
+      <label for="v-short">short</label>
+      <input type="radio" name="variant" id="v-medium" value="medium" checked>
+      <label for="v-medium">medium</label>
+      <input type="radio" name="variant" id="v-long" value="long">
+      <label for="v-long">long</label>
+    </div>
+  </div>
+
+  <div class="control">
+    <label>Volume <output id="vol-out">0.5</output></label>
+    <input type="range" id="volume" min="0" max="1" step="0.05" value="0.5">
+  </div>
+
+  <div class="control">
+    <label>Pitch <output id="pitch-out">0 st</output></label>
+    <input type="range" id="pitch" min="-12" max="12" step="1" value="0">
+  </div>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<footer>
+  <p>Install: <code>npm install earcons</code> &nbsp;·&nbsp; <a href="https://www.npmjs.com/package/earcons">npm</a> &nbsp;·&nbsp; <a href="https://github.com/smolgroot/earcons">GitHub</a></p>
+</footer>
+
+<script>
+  const SOUNDS = [
+    { name: "success",      fn: "playSuccess",      color: "var(--success)",      desc: "Ascending major triad — bright, positive" },
+    { name: "error",        fn: "playError",        color: "var(--error)",        desc: "Descending tritone — harsh, attention-grabbing" },
+    { name: "warning",      fn: "playWarning",      color: "var(--warning)",      desc: "Flat→descending minor 2nd — cautious" },
+    { name: "notification", fn: "playNotification", color: "var(--notification)", desc: "Soft two-tone ding — neutral" },
+    { name: "click",        fn: "playClick",        color: "var(--click)",        desc: "Short transient — tactile UI feedback" },
+    { name: "info",         fn: "playInfo",         color: "var(--info)",         desc: "Single soft tone — informational" },
+  ];
+
+  const grid = document.getElementById("grid");
+
+  function getOpts() {
+    return {
+      variant: document.querySelector('input[name="variant"]:checked').value,
+      volume: parseFloat(document.getElementById("volume").value),
+      pitch: parseInt(document.getElementById("pitch").value, 10),
+    };
+  }
+
+  SOUNDS.forEach(({ name, fn, color, desc }) => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <div class="card-header">
+        <div class="dot" style="background:${color}"></div>
+        <span class="card-name">${name}</span>
+      </div>
+      <p class="card-desc">${desc}</p>
+      <button class="play-btn" data-fn="${fn}">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        Play
+      </button>
+      <div class="snippet">Earcon.${fn}()</div>
+    `;
+    grid.appendChild(card);
+  });
+
+  // Update snippet when controls change
+  function updateSnippets() {
+    const { variant, volume, pitch } = getOpts();
+    const parts = [];
+    if (variant !== "medium") parts.push(`variant: "${variant}"`);
+    if (volume !== 0.5) parts.push(`volume: ${volume}`);
+    if (pitch !== 0) parts.push(`pitch: ${pitch}`);
+    const opts = parts.length ? `{ ${parts.join(", ")} }` : "";
+
+    document.querySelectorAll(".play-btn").forEach((btn, i) => {
+      const fn = SOUNDS[i].fn;
+      btn.closest(".card").querySelector(".snippet").textContent =
+        opts ? `Earcon.${fn}(${opts})` : `Earcon.${fn}()`;
+    });
+  }
+
+  document.querySelectorAll('input[name="variant"]').forEach(r => r.addEventListener("change", updateSnippets));
+  document.getElementById("volume").addEventListener("input", e => {
+    document.getElementById("vol-out").textContent = parseFloat(e.target.value).toFixed(2);
+    updateSnippets();
+  });
+  document.getElementById("pitch").addEventListener("input", e => {
+    const v = parseInt(e.target.value, 10);
+    document.getElementById("pitch-out").textContent = (v >= 0 ? "+" : "") + v + " st";
+    updateSnippets();
+  });
+
+  // Play buttons
+  grid.addEventListener("click", async e => {
+    const btn = e.target.closest(".play-btn");
+    if (!btn) return;
+    const fn = btn.dataset.fn;
+    if (!Earcon[fn]) return;
+
+    btn.classList.add("playing");
+    btn.querySelector("svg").innerHTML = '<rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/>';
+
+    const opts = getOpts();
+    await Earcon[fn]({
+      ...opts,
+      onEnded: () => {
+        btn.classList.remove("playing");
+        btn.querySelector("svg").innerHTML = '<path d="M8 5v14l11-7z"/>';
+      }
+    });
+  });
+</script>
+</body>
+</html>

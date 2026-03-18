@@ -3,8 +3,11 @@
 > Tiny vanilla TypeScript library for UI notification sounds — pure Web Audio API, no audio files, zero dependencies.
 
 [![npm](https://img.shields.io/npm/v/earcons)](https://www.npmjs.com/package/earcons)
+[![CI](https://github.com/smolgroot/earcons/actions/workflows/ci.yml/badge.svg)](https://github.com/smolgroot/earcons/actions/workflows/ci.yml)
 [![bundle size](https://img.shields.io/bundlephobia/minzip/earcons)](https://bundlephobia.com/package/earcons)
 [![license](https://img.shields.io/npm/l/earcons)](LICENSE)
+
+**[▶ Live demo](https://smolgroot.github.io/earcons)**
 
 ## Why earcon?
 
