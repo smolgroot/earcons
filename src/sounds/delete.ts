@@ -1,38 +1,39 @@
 // ---------------------------------------------------------------------------
 // earcon — "delete" preset
-// Rapid descending sawtooth notes — conveys loss/removal without panic.
+// Soft sine sweep dissolving downward — calm "removed" feeling, not alarming.
+// Fast per-note decay with no sustain creates a clean disappearing effect.
 // ---------------------------------------------------------------------------
 
 import type { EarconSound, SoundVariant } from "../types.js";
 
-const ENV = { attack: 0.003, decay: 0.04, sustain: 0.3, release: 0.07 } as const;
+const ENV = { attack: 0.006, decay: 0.05, sustain: 0.0, release: 0.08 } as const;
 
 const VARIANTS: Record<SoundVariant, EarconSound> = {
   short: {
     name: "delete",
-    duration: 0.22,
+    duration: 0.28,
     notes: [
-      { frequency: 440, duration: 0.07, startAt: 0,    waveShape: "sawtooth", gain: 0.5, envelope: ENV },
-      { frequency: 293, duration: 0.12, startAt: 0.08, waveShape: "sawtooth", gain: 0.55, envelope: ENV },
+      { frequency: 587, duration: 0.1,  startAt: 0,    waveShape: "sine", gain: 0.6,  envelope: ENV },
+      { frequency: 392, duration: 0.16, startAt: 0.1,  waveShape: "sine", gain: 0.55, envelope: ENV },
     ],
   },
   medium: {
     name: "delete",
-    duration: 0.38,
+    duration: 0.42,
     notes: [
-      { frequency: 523, duration: 0.07, startAt: 0,    waveShape: "sawtooth", gain: 0.45, envelope: ENV },
-      { frequency: 415, duration: 0.07, startAt: 0.09, waveShape: "sawtooth", gain: 0.5, envelope: ENV },
-      { frequency: 277, duration: 0.15, startAt: 0.18, waveShape: "sawtooth", gain: 0.55, envelope: ENV },
+      { frequency: 659, duration: 0.08, startAt: 0,    waveShape: "sine", gain: 0.55, envelope: ENV },
+      { frequency: 523, duration: 0.1,  startAt: 0.09, waveShape: "sine", gain: 0.58, envelope: ENV },
+      { frequency: 349, duration: 0.2,  startAt: 0.19, waveShape: "sine", gain: 0.55, envelope: ENV },
     ],
   },
   long: {
     name: "delete",
-    duration: 0.55,
+    duration: 0.6,
     notes: [
-      { frequency: 587, duration: 0.07, startAt: 0,    waveShape: "sawtooth", gain: 0.4, envelope: ENV },
-      { frequency: 494, duration: 0.07, startAt: 0.09, waveShape: "sawtooth", gain: 0.45, envelope: ENV },
-      { frequency: 392, duration: 0.07, startAt: 0.18, waveShape: "sawtooth", gain: 0.5, envelope: ENV },
-      { frequency: 277, duration: 0.2,  startAt: 0.27, waveShape: "sawtooth", gain: 0.55, envelope: ENV },
+      { frequency: 698, duration: 0.08, startAt: 0,    waveShape: "sine", gain: 0.52, envelope: ENV },
+      { frequency: 587, duration: 0.09, startAt: 0.1,  waveShape: "sine", gain: 0.55, envelope: ENV },
+      { frequency: 466, duration: 0.1,  startAt: 0.21, waveShape: "sine", gain: 0.55, envelope: ENV },
+      { frequency: 311, duration: 0.22, startAt: 0.33, waveShape: "sine", gain: 0.52, envelope: ENV },
     ],
   },
 };

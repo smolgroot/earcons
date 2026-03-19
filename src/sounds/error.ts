@@ -1,45 +1,40 @@
 // ---------------------------------------------------------------------------
 // earcon — "error" preset
-// Descending dissonant tones (tritone), harsh and attention-grabbing.
+// Soft descending sine tones in the low register — modern "nope" feel.
+// Two near-overlapping notes create a gentle dissonance without retro buzz.
+// Inspired by iOS / macOS error feedback (Basso).
 // ---------------------------------------------------------------------------
 
 import type { EarconSound, SoundVariant } from "../types.js";
 
+const ENV = { attack: 0.012, decay: 0.06, sustain: 0.25, release: 0.14 } as const;
+
 const VARIANTS: Record<SoundVariant, EarconSound> = {
   short: {
     name: "error",
-    duration: 0.25,
+    duration: 0.32,
     notes: [
-      { frequency: 440, duration: 0.1,  startAt: 0,    waveShape: "square", gain: 0.5,
-        envelope: { attack: 0.005, decay: 0.04, sustain: 0.6, release: 0.06 } },
-      { frequency: 311, duration: 0.15, startAt: 0.1,  waveShape: "square", gain: 0.6,
-        envelope: { attack: 0.005, decay: 0.04, sustain: 0.6, release: 0.06 } },
+      { frequency: 330, duration: 0.14, startAt: 0,    waveShape: "sine", gain: 0.65, envelope: ENV },
+      { frequency: 247, duration: 0.2,  startAt: 0.08, waveShape: "sine", gain: 0.7,  envelope: ENV },
     ],
   },
   medium: {
     name: "error",
-    duration: 0.5,
+    duration: 0.52,
     notes: [
-      { frequency: 440, duration: 0.12, startAt: 0,    waveShape: "sawtooth", gain: 0.4,
-        envelope: { attack: 0.005, decay: 0.06, sustain: 0.5, release: 0.08 } },
-      { frequency: 392, duration: 0.12, startAt: 0.13, waveShape: "sawtooth", gain: 0.45,
-        envelope: { attack: 0.005, decay: 0.06, sustain: 0.5, release: 0.08 } },
-      { frequency: 311, duration: 0.2,  startAt: 0.26, waveShape: "sawtooth", gain: 0.55,
-        envelope: { attack: 0.005, decay: 0.06, sustain: 0.5, release: 0.12 } },
+      { frequency: 370, duration: 0.14, startAt: 0,    waveShape: "sine", gain: 0.6,  envelope: ENV },
+      { frequency: 294, duration: 0.16, startAt: 0.1,  waveShape: "sine", gain: 0.65, envelope: ENV },
+      { frequency: 220, duration: 0.25, startAt: 0.22, waveShape: "sine", gain: 0.7,  envelope: ENV },
     ],
   },
   long: {
     name: "error",
-    duration: 0.75,
+    duration: 0.78,
     notes: [
-      { frequency: 440, duration: 0.12, startAt: 0,    waveShape: "sawtooth", gain: 0.4,
-        envelope: { attack: 0.005, decay: 0.07, sustain: 0.5, release: 0.1 } },
-      { frequency: 415, duration: 0.1,  startAt: 0.14, waveShape: "sawtooth", gain: 0.4,
-        envelope: { attack: 0.005, decay: 0.07, sustain: 0.5, release: 0.1 } },
-      { frequency: 370, duration: 0.12, startAt: 0.26, waveShape: "sawtooth", gain: 0.45,
-        envelope: { attack: 0.005, decay: 0.07, sustain: 0.5, release: 0.1 } },
-      { frequency: 311, duration: 0.25, startAt: 0.4,  waveShape: "sawtooth", gain: 0.55,
-        envelope: { attack: 0.005, decay: 0.08, sustain: 0.5, release: 0.15 } },
+      { frequency: 392, duration: 0.14, startAt: 0,    waveShape: "sine", gain: 0.58, envelope: ENV },
+      { frequency: 330, duration: 0.14, startAt: 0.13, waveShape: "sine", gain: 0.62, envelope: ENV },
+      { frequency: 262, duration: 0.16, startAt: 0.26, waveShape: "sine", gain: 0.66, envelope: ENV },
+      { frequency: 196, duration: 0.28, startAt: 0.42, waveShape: "sine", gain: 0.72, envelope: ENV },
     ],
   },
 };

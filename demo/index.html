@@ -4,7 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>earcons — live demo</title>
-  <script src="https://cdn.jsdelivr.net/npm/earcons@0.3.0/dist/earcon.min.global.js"></script>
+  <script>
+    (function() {
+      var s = document.createElement('script');
+      var local = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+      s.src = local
+        ? '../dist/earcon.min.global.js'
+        : 'https://cdn.jsdelivr.net/npm/earcons@0.3.0/dist/earcon.min.global.js';
+      document.head.appendChild(s);
+    })();
+  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -31,6 +40,13 @@
       --police: #ef4444;
       --coin: #fcd34d;
       --boing: #fb923c;
+      --failure: #f43f5e;
+      --joyful: #a3e635;
+      --flushing: #38bdf8;
+      --blaster: #d946ef;
+      --wave: #22d3ee;
+      --win: #eab308;
+      --waterDrop: #7dd3fc;
       --radius: 10px;
     }
 
@@ -330,7 +346,14 @@
     { name: "eightBit",     fn: "playEightBit",     color: "var(--eightBit)",     desc: "Chiptune arpeggio 🕹️" },
     { name: "police",       fn: "playPolice",       color: "var(--police)",       desc: "Wee-woo! Alternating siren 🚨" },
     { name: "coin",         fn: "playCoin",         color: "var(--coin)",         desc: "Classic pickup coin 🪙" },
-    { name: "boing",        fn: "playBoing",        color: "var(--boing)",        desc: "Comedy spring drop 🎪" },
+    { name: "boing",        fn: "playBoing",        color: "var(--boing)",        desc: "Comedy spring drop 🎪" },    { _divider: "Cinematic & SFX 🎥" },
+    { name: "failure",      fn: "playFailure",     color: "var(--failure)",     desc: "Dam-dam-dam-DAAAAM 🎼" },
+    { name: "joyful",       fn: "playJoyful",      color: "var(--joyful)",      desc: "Bouncing major pentatonic arpeggio 😄" },
+    { name: "win",          fn: "playWin",         color: "var(--win)",         desc: "Triumphant fanfare 🏆" },
+    { name: "wave",         fn: "playWave",        color: "var(--wave)",        desc: "Ocean swell — build and recede 🌊" },
+    { name: "waterDrop",    fn: "playWaterDrop",   color: "var(--waterDrop)",   desc: "Water droplet pluck 💧" },
+    { name: "flushing",     fn: "playFlushing",    color: "var(--flushing)",    desc: "Cascading water drain 🚿" },
+    { name: "blaster",      fn: "playBlaster",     color: "var(--blaster)",     desc: "Sci-fi laser shot ⚡" },
   ];
 
   const grid = document.getElementById("grid");

@@ -35,6 +35,13 @@ import {
   policePreset,
   coinPreset,
   boingPreset,
+  failurePreset,
+  joyfulPreset,
+  flushingPreset,
+  blasterPreset,
+  wavePreset,
+  winPreset,
+  waterDropPreset,
 } from "./sounds/index.js";
 
 // ---------------------------------------------------------------------------
@@ -132,6 +139,41 @@ export async function playBoing(opts: SoundOptions = {}): Promise<void> {
   return play(boingPreset(opts.variant ?? "medium", opts.pitch ?? 0), opts);
 }
 
+/** Play a dramatic "dam-dam-dam-DAAAAM" failure sound */
+export async function playFailure(opts: SoundOptions = {}): Promise<void> {
+  return play(failurePreset(opts.variant ?? "medium", opts.pitch ?? 0), opts);
+}
+
+/** Play a bright bouncing joyful arpeggio 😄 */
+export async function playJoyful(opts: SoundOptions = {}): Promise<void> {
+  return play(joyfulPreset(opts.variant ?? "medium", opts.pitch ?? 0), opts);
+}
+
+/** Play a cascading water-drain flushing sweep 🚿 */
+export async function playFlushing(opts: SoundOptions = {}): Promise<void> {
+  return play(flushingPreset(opts.variant ?? "medium", opts.pitch ?? 0), opts);
+}
+
+/** Play a sci-fi laser blaster shot ⚡ */
+export async function playBlaster(opts: SoundOptions = {}): Promise<void> {
+  return play(blasterPreset(opts.variant ?? "short", opts.pitch ?? 0), opts);
+}
+
+/** Play a gentle ocean wave swell 🌊 */
+export async function playWave(opts: SoundOptions = {}): Promise<void> {
+  return play(wavePreset(opts.variant ?? "medium", opts.pitch ?? 0), opts);
+}
+
+/** Play a triumphant win / level-complete fanfare 🏆 */
+export async function playWin(opts: SoundOptions = {}): Promise<void> {
+  return play(winPreset(opts.variant ?? "medium", opts.pitch ?? 0), opts);
+}
+
+/** Play a clean water drop pluck 💧 */
+export async function playWaterDrop(opts: SoundOptions = {}): Promise<void> {
+  return play(waterDropPreset(opts.variant ?? "short", opts.pitch ?? 0), opts);
+}
+
 // ---------------------------------------------------------------------------
 // Sound bank — generic play-by-name API
 // ---------------------------------------------------------------------------
@@ -154,6 +196,13 @@ const BANK = {
   police: policePreset,
   coin: coinPreset,
   boing: boingPreset,
+  failure: failurePreset,
+  joyful: joyfulPreset,
+  flushing: flushingPreset,
+  blaster: blasterPreset,
+  wave: wavePreset,
+  win: winPreset,
+  waterDrop: waterDropPreset,
 } as const;
 
 export type SoundName = keyof typeof BANK;
