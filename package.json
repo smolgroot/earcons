@@ -1,6 +1,6 @@
 {
   "name": "earcons",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Tiny vanilla TypeScript library for playing UI notification sounds via the Web Audio API — no audio files, no dependencies.",
   "keywords": [
     "web-audio-api",
