@@ -1,13 +1,22 @@
-# earcons
+<div align="center">
+  <img src="demo/logo.png" alt="earcons logo" width="120" />
 
-> Tiny vanilla TypeScript library for UI notification sounds — pure Web Audio API, no audio files, zero dependencies.
+  <p>
+    UI notification sounds via the Web Audio API.<br />
+    No audio files. No dependencies. Pure TypeScript.
+  </p>
 
-[![npm](https://img.shields.io/npm/v/earcons)](https://www.npmjs.com/package/earcons)
-[![CI](https://github.com/smolgroot/earcons/actions/workflows/ci.yml/badge.svg)](https://github.com/smolgroot/earcons/actions/workflows/ci.yml)
-[![bundle size](https://img.shields.io/bundlephobia/minzip/earcons)](https://bundlephobia.com/package/earcons)
-[![license](https://img.shields.io/npm/l/earcons)](LICENSE)
+  <p>
+    <a href="https://www.npmjs.com/package/earcons"><img alt="npm" src="https://img.shields.io/npm/v/earcons?color=6c8aff&labelColor=6c8aff&logoColor=white" /></a>
+    <a href="https://github.com/smolgroot/earcons/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/smolgroot/earcons/ci.yml?label=CI&color=6c8aff&labelColor=6c8aff&logoColor=white" /></a>
+    <a href="https://bundlephobia.com/package/earcons"><img alt="bundle size" src="https://img.shields.io/bundlephobia/minzip/earcons?color=6c8aff&labelColor=6c8aff&logoColor=white" /></a>
+    <a href="LICENSE"><img alt="license" src="https://img.shields.io/npm/l/earcons?color=6c8aff&labelColor=6c8aff&logoColor=white" /></a>
+  </p>
 
-**[▶ Live demo](https://smolgroot.github.io/earcons)**
+  <p><a href="https://smolgroot.github.io/earcons"><strong>▶ Live demo</strong></a></p>
+</div>
+
+<hr />
 
 ## Why earcon?
 
@@ -168,10 +177,10 @@ await closeAudioContext();
 
 | Name | Waveform | Character |
 |---|---|---|
-| `eightBit` | square | Chiptune arpeggio — retro 8-bit 🕹️ |
-| `police` | sawtooth | Alternating wee-woo siren 🚨 |
-| `coin` | square | Classic pickup coin 🪙 |
-| `boing` | sine | Comedy spring drop 🎪 |
+| `eightBit` | square | Chiptune arpeggio — retro 8-bit|
+| `police` | sawtooth | Alternating wee-woo siren |
+| `coin` | square | Classic pickup coin |
+| `boing` | sine | Comedy spring drop |
 
 ---
 
