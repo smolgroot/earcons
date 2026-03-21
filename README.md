@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="demo/logo.png" alt="earcons logo" width="120" />
+  <img src="demo/logo.png" alt="earcons logo" width="256" />
 
   <p>
     UI notification sounds via the Web Audio API.<br />
