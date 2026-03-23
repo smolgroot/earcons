@@ -8,3 +8,6 @@ dist/
 .DS_Store
 *.log
 npm-debug.log*
+WIP
+wip
+.github/copilot-instructions.md
