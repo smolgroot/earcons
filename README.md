@@ -170,8 +170,8 @@ await closeAudioContext();
 | `toggle` | triangle | Short tactile pop — on/off switch |
 | `delete` | sawtooth | Rapid descending — destructive action |
 | `message` | sine | Soft high ping — incoming chat message |
-| `upload` | sine | Ascending sweep — file sent |
-| `download` | sine | Descending sweep — file received |
+| `plugIn` | sine | Ascending sweep — inserted / connected |
+| `plugOut` | sine | Descending sweep — removed / disconnected |
 
 ### Fun & misc
 

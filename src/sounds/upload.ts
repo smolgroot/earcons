@@ -1,13 +1,13 @@
 // ---------------------------------------------------------------------------
-// earcon — "upload" preset
-// Ascending sine sweep — upward motion signals "sent / going up".
+// earcon — "plugIn" preset
+// Ascending sine sweep — upward motion signals "inserted / connected".
 // ---------------------------------------------------------------------------
 
 import type { EarconSound, SoundVariant } from "../types.js";
 
 const VARIANTS: Record<SoundVariant, EarconSound> = {
   short: {
-    name: "upload",
+    name: "plugIn",
     duration: 0.24,
     notes: [
       { frequency: 523, duration: 0.08, startAt: 0,    waveShape: "sine", gain: 0.6 },
@@ -15,7 +15,7 @@ const VARIANTS: Record<SoundVariant, EarconSound> = {
     ],
   },
   medium: {
-    name: "upload",
+    name: "plugIn",
     duration: 0.4,
     notes: [
       { frequency: 392, duration: 0.08, startAt: 0,    waveShape: "sine", gain: 0.55 },
@@ -24,7 +24,7 @@ const VARIANTS: Record<SoundVariant, EarconSound> = {
     ],
   },
   long: {
-    name: "upload",
+    name: "plugIn",
     duration: 0.58,
     notes: [
       { frequency: 330, duration: 0.08, startAt: 0,    waveShape: "sine", gain: 0.5 },
@@ -35,7 +35,10 @@ const VARIANTS: Record<SoundVariant, EarconSound> = {
   },
 };
 
-export function uploadPreset(variant: SoundVariant, pitchSemitones: number): EarconSound {
+export function plugInPreset(variant: SoundVariant, pitchSemitones: number): EarconSound {
   void pitchSemitones;
   return VARIANTS[variant];
 }
+
+/** @deprecated Use plugInPreset instead. */
+export const uploadPreset = plugInPreset;

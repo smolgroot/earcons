@@ -34,8 +34,8 @@
       --toggle: #2dd4bf;
       --delete: #fb7185;
       --message: #c084fc;
-      --upload: #86efac;
-      --download: #7dd3fc;
+      --plugIn: #86efac;
+      --plugOut: #7dd3fc;
       --eightBit: #fde68a;
       --police: #ef4444;
       --coin: #fcd34d;
@@ -47,6 +47,10 @@
       --wave: #22d3ee;
       --win: #eab308;
       --waterDrop: #7dd3fc;
+      --dialing: #06b6d4;
+      --callStart: #10b981;
+      --callEnd: #ef5350;
+      --incomingRing: #f97316;
       --radius: 10px;
     }
 
@@ -340,8 +344,13 @@
     { name: "toggle",       fn: "playToggle",       color: "var(--toggle)",       desc: "Tactile on/off switch" },
     { name: "delete",       fn: "playDelete",       color: "var(--delete)",       desc: "Rapid descending — destructive action" },
     { name: "message",      fn: "playMessage",      color: "var(--message)",      desc: "Soft high ping — incoming chat" },
-    { name: "upload",       fn: "playUpload",       color: "var(--upload)",       desc: "Ascending sweep — file sent" },
-    { name: "download",     fn: "playDownload",     color: "var(--download)",     desc: "Descending sweep — file received" },
+    { name: "plugIn",       fn: "playPlugIn",       color: "var(--plugIn)",       desc: "Ascending sweep — inserted / connected" },
+    { name: "plugOut",      fn: "playPlugOut",      color: "var(--plugOut)",      desc: "Descending sweep — removed / disconnected" },
+    { _divider: "Calls ☎️" },
+    { name: "dialing",      fn: "playDialing",      color: "var(--dialing)",      desc: "DTMF ascending tone sequence" },
+    { name: "callStart",    fn: "playCallStart",    color: "var(--callStart)",    desc: "Rich harmonic chord (consonant & warm)" },
+    { name: "callEnd",      fn: "playCallEnd",      color: "var(--callEnd)",      desc: "Soft harmonic fadeout (disconnect)" },
+    { name: "incomingRing", fn: "playIncomingRing", color: "var(--incomingRing)", desc: "Classic rotary phone ring pattern" },
     { _divider: "Fun & Misc 🎮" },
     { name: "eightBit",     fn: "playEightBit",     color: "var(--eightBit)",     desc: "Chiptune arpeggio" },
     { name: "police",       fn: "playPolice",       color: "var(--police)",       desc: "Wee-woo! Alternating siren" },

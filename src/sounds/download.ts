@@ -1,13 +1,13 @@
 // ---------------------------------------------------------------------------
-// earcon — "download" preset
-// Descending sine sweep — mirror of upload, signals "received / arriving".
+// earcon — "plugOut" preset
+// Descending sine sweep — mirror of plugIn, signals "removed / disconnected".
 // ---------------------------------------------------------------------------
 
 import type { EarconSound, SoundVariant } from "../types.js";
 
 const VARIANTS: Record<SoundVariant, EarconSound> = {
   short: {
-    name: "download",
+    name: "plugOut",
     duration: 0.24,
     notes: [
       { frequency: 784, duration: 0.08, startAt: 0,    waveShape: "sine", gain: 0.7 },
@@ -15,7 +15,7 @@ const VARIANTS: Record<SoundVariant, EarconSound> = {
     ],
   },
   medium: {
-    name: "download",
+    name: "plugOut",
     duration: 0.4,
     notes: [
       { frequency: 784, duration: 0.08, startAt: 0,    waveShape: "sine", gain: 0.75 },
@@ -24,7 +24,7 @@ const VARIANTS: Record<SoundVariant, EarconSound> = {
     ],
   },
   long: {
-    name: "download",
+    name: "plugOut",
     duration: 0.58,
     notes: [
       { frequency: 784, duration: 0.08, startAt: 0,    waveShape: "sine", gain: 0.75 },
@@ -35,7 +35,10 @@ const VARIANTS: Record<SoundVariant, EarconSound> = {
   },
 };
 
-export function downloadPreset(variant: SoundVariant, pitchSemitones: number): EarconSound {
+export function plugOutPreset(variant: SoundVariant, pitchSemitones: number): EarconSound {
   void pitchSemitones;
   return VARIANTS[variant];
 }
+
+/** @deprecated Use plugOutPreset instead. */
+export const downloadPreset = plugOutPreset;

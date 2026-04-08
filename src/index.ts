@@ -29,8 +29,8 @@ import {
   togglePreset,
   deletePreset,
   messagePreset,
-  uploadPreset,
-  downloadPreset,
+  plugInPreset,
+  plugOutPreset,
   eightBitPreset,
   policePreset,
   coinPreset,
@@ -42,6 +42,10 @@ import {
   wavePreset,
   winPreset,
   waterDropPreset,
+  dialingPreset,
+  callStartPreset,
+  callEndPreset,
+  incomingRingPreset,
 } from "./sounds/index.js";
 
 // ---------------------------------------------------------------------------
@@ -109,15 +113,21 @@ export async function playMessage(opts: SoundOptions = {}): Promise<void> {
   return play(messagePreset(opts.variant ?? "medium", opts.pitch ?? 0), opts);
 }
 
-/** Play an upload / send-complete ascending sweep */
-export async function playUpload(opts: SoundOptions = {}): Promise<void> {
-  return play(uploadPreset(opts.variant ?? "medium", opts.pitch ?? 0), opts);
+/** Play a plug-in / insert-complete ascending sweep */
+export async function playPlugIn(opts: SoundOptions = {}): Promise<void> {
+  return play(plugInPreset(opts.variant ?? "medium", opts.pitch ?? 0), opts);
 }
 
-/** Play a download / receive-complete descending sweep */
-export async function playDownload(opts: SoundOptions = {}): Promise<void> {
-  return play(downloadPreset(opts.variant ?? "medium", opts.pitch ?? 0), opts);
+/** Play a plug-out / eject-complete descending sweep */
+export async function playPlugOut(opts: SoundOptions = {}): Promise<void> {
+  return play(plugOutPreset(opts.variant ?? "medium", opts.pitch ?? 0), opts);
 }
+
+/** @deprecated Use playPlugIn instead. */
+export const playUpload = playPlugIn;
+
+/** @deprecated Use playPlugOut instead. */
+export const playDownload = playPlugOut;
 
 /** Play a retro 8-bit chiptune arpeggio 🕹️ */
 export async function playEightBit(opts: SoundOptions = {}): Promise<void> {
@@ -174,6 +184,26 @@ export async function playWaterDrop(opts: SoundOptions = {}): Promise<void> {
   return play(waterDropPreset(opts.variant ?? "short", opts.pitch ?? 0), opts);
 }
 
+/** Play a dialing sequence (ascending DTMF tones) ☎️ */
+export async function playDialing(opts: SoundOptions = {}): Promise<void> {
+  return play(dialingPreset(opts.variant ?? "medium", opts.pitch ?? 0), opts);
+}
+
+/** Play a call connection established chime 📞 */
+export async function playCallStart(opts: SoundOptions = {}): Promise<void> {
+  return play(callStartPreset(opts.variant ?? "medium", opts.pitch ?? 0), opts);
+}
+
+/** Play a hang up / call ended sound 📳 */
+export async function playCallEnd(opts: SoundOptions = {}): Promise<void> {
+  return play(callEndPreset(opts.variant ?? "medium", opts.pitch ?? 0), opts);
+}
+
+/** Play an incoming phone ring (classic rotary pattern) 📱 */
+export async function playIncomingRing(opts: SoundOptions = {}): Promise<void> {
+  return play(incomingRingPreset(opts.variant ?? "medium", opts.pitch ?? 0), opts);
+}
+
 // ---------------------------------------------------------------------------
 // Sound bank — generic play-by-name API
 // ---------------------------------------------------------------------------
@@ -189,8 +219,11 @@ const BANK = {
   toggle: togglePreset,
   delete: deletePreset,
   message: messagePreset,
-  upload: uploadPreset,
-  download: downloadPreset,
+  plugIn: plugInPreset,
+  plugOut: plugOutPreset,
+  // legacy aliases
+  upload: plugInPreset,
+  download: plugOutPreset,
   // fun & misc
   eightBit: eightBitPreset,
   police: policePreset,
@@ -203,6 +236,11 @@ const BANK = {
   wave: wavePreset,
   win: winPreset,
   waterDrop: waterDropPreset,
+  // call sounds
+  dialing: dialingPreset,
+  callStart: callStartPreset,
+  callEnd: callEndPreset,
+  incomingRing: incomingRingPreset,
 } as const;
 
 export type SoundName = keyof typeof BANK;
